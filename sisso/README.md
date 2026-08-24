@@ -1,8 +1,10 @@
 # SISSO++ descriptor search
 
 This directory reproduces the sparse descriptor search from the reported
-13-material data set. It operates only on the tables in `data/sisso/`; it does
-not read ELFCAR files or recalculate the one-dimensional ELF profiles.
+13-material data set. It operates only on tables supplied locally under
+`data/sisso/`; the tables are not included in the current public snapshot, and
+the workflow does not read ELFCAR files or recalculate the one-dimensional ELF
+profiles.
 
 The search space contains 1,539 dimensionless candidates derived from the
 bond-level quantities `d`, `r`, and `h`. One dimension (`D=1`) is the primary
@@ -13,7 +15,7 @@ used to predict that material.
 
 ## Data files
 
-The commands below use these repository-relative files by default:
+The commands below use these local repository-relative files by default:
 
 ```text
 data/sisso/candidate_matrix.csv

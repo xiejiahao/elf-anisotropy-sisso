@@ -1,12 +1,11 @@
 # ELF Anisotropy Descriptor and SISSO++ Workflow
 
-This repository contains the code and source data used to identify and evaluate an electron-localization-function (ELF) anisotropy descriptor for two-dimensional Sn(II) and Pb(II) iodide perovskites.
+This repository contains the code used to identify and evaluate an electron-localization-function (ELF) anisotropy descriptor for two-dimensional Sn(II) and Pb(II) iodide perovskites.
 
-The repository has three independent entry points:
+The repository has two independent entry points:
 
 - `descriptor/`: an installable command-line program that calculates the final ELF anisotropy descriptor directly from a VASP `ELFCAR` file.
 - `sisso/`: the physically constrained SISSO++ candidate-search and nested leave-one-material-out validation workflow.
-- `data/`: extracted one-dimensional ELF profiles, bond- and site-level quantities, candidate tables, and validation results. Raw `ELFCAR` files are not distributed.
 
 ## Descriptor definition
 
@@ -48,7 +47,7 @@ See [`descriptor/README.md`](descriptor/README.md) for the algorithm, complete c
 
 ## Reproducing the descriptor search
 
-The SISSO++ workflow starts from the public tables in `data/`; it does not require the original `ELFCAR` files.
+The SISSO++ workflow expects its input tables under a local `data/` directory. These tables are not included in the current public snapshot, and the workflow does not require the original `ELFCAR` files.
 
 ```bash
 python3 sisso/prepare_candidates.py
@@ -57,12 +56,6 @@ python3 sisso/summarize_results.py --verify-reference
 ```
 
 See [`sisso/README.md`](sisso/README.md) for the pinned SISSO++ version, build instructions, nested-validation design, and expected results.
-
-## Source data
-
-The source-data release begins from the extracted one-dimensional ELF profiles. It includes all six metal-halide coordination directions at every metal site in the 13-compound Sn dataset, together with the selected peak quantities and material-level descriptors. This is sufficient to reproduce the descriptor values, the candidate-search inputs, and the reported validation results without distributing the three-dimensional `ELFCAR` grids.
-
-See [`data/README.md`](data/README.md) for table definitions and provenance.
 
 ## Scientific scope
 

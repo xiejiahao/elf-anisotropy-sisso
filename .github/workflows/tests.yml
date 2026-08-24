@@ -26,6 +26,3 @@ jobs:
 
       - name: Test SISSO workflow utilities
         run: python -m unittest discover -s sisso/tests -v
-
-      - name: Validate public candidate tables
-        run: python sisso/prepare_candidates.py --output-dir /tmp/sisso-inputs
