@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "elf-anisotropy"
+version = "1.0.0"
+description = "ELF anisotropy descriptor for six-coordinate Sn/Pb iodide structures"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+  "numpy>=1.26",
+  "pymatgen>=2024.5.1",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+elf-anisotropy = "elf_anisotropy.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/elf_anisotropy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

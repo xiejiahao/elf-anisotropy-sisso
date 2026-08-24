@@ -1,0 +1,31 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: descriptor/pyproject.toml
+
+      - name: Install descriptor package
+        run: python -m pip install './descriptor[test]'
+
+      - name: Test descriptor package
+        run: python -m pytest descriptor/tests
+
+      - name: Test SISSO workflow utilities
+        run: python -m unittest discover -s sisso/tests -v
+
+      - name: Validate public candidate tables
+        run: python sisso/prepare_candidates.py --output-dir /tmp/sisso-inputs
